@@ -2,7 +2,7 @@
 class Quiz{
     constructor(questions){
         this.score=0;
-        this.questions=0;
+        this.questions=questions;
         this.questionIndex=0;
 
     }
@@ -33,8 +33,8 @@ class Quiz{
 
       }
 
-      isCorrectAnswer(choices){
-          return this.answer===choices;
+      isCorrectAnswer(choice){
+          return this.answer===choice;
       }
   }
 
@@ -71,6 +71,67 @@ class Quiz{
       }
 
   }
+
+  //SHOW PROGRESS OF QUIZ
+
+  function showProgress(){
+      let currentQuestionNumber=quiz.questionIndex+1;
+      let progressElement=document.getElementById("progress")
+
+      progressElement.innerHTML=`Question ${currentQuestionNumber} of ${quiz.questions.length}`;
+
+  }
+
+  //SHOW SCORE
+
+  function showScores(){
+      let quizEndHTML=`
+      <h1>Quiz Completed </h1>
+      <h2 id="score"> You Scored: ${quiz.score} of ${quiz.questions.length}</h2>
+      <div class="quiz-repeat">
+      <a href="index.html">Take Quiz Again</a>
+      </div> 
+      `;
+
+    let quizElement=document.getElementById("quiz");
+    quizElement.innerHTML=quizEndHTML;
+    }
+
+    // CREATE QUIZ QUESTIONS
+
+    let questions=[
+        new Question(
+            "Hyper Text Markup Language Stands For?",
+            ["JQuery","XHTML","CSS","HTML"],"HTML" 
+
+        ),
+        new Question(
+            "Cascading Style sheet stands for?",["HTML","JQuery","CSS","XML"],"CSS"
+
+        ),
+        new Question(
+            "Which is a  Javascript Framework?",["React","Laravel","Django","Sass"],"React"
+
+        ),
+        new Question(
+            "Which is a backend language?",["PHP","HTML","React","All"],"PHP"
+
+        ),
+        new Question(
+            "Which is best for Artificial intelligence",["React","Laravel","Python","Sass"],"Python"
+
+        )
+
+
+    ];
+
+    let quiz=new Quiz(questions);
+
+    // DISPLAY QUESTIONS
+
+    displayQuestion();
+
+
 
 
 
