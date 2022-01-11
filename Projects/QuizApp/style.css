@@ -91,3 +91,30 @@
     
     
 }
+.quiz-repeat{
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+#score{
+    color: black;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+}
+.quiz-repeat a{
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    background-color: orangered;
+    padding: 1rem;
+    border-radius: 5px;
+    transition: all .3s;
+}
+.quiz-repeat a:hover{
+    background-color: palevioletred;
+
+}
+
