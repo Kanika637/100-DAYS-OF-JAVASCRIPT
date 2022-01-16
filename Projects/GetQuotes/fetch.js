@@ -1,7 +1,7 @@
 const btn=document.querySelector(".get-quotes")
 btn.addEventListener("click",getQuotes)
 const number=document.getElementById("number")
-const URL="https://type.fit/api/quotes"
+const URL="https://type.fit/api/quotes";
 
 function getQuotes(e){
 
@@ -17,9 +17,10 @@ function getQuotes(e){
         })
         .then(function(data){
             // console.log(JSON.stringify(data));
+            data=shuffle(data);
             
-
             let output="";
+            
             for(let i=0;i<data.length;i++){
                 if(i==number.value){break;}
                 output+=`
@@ -32,5 +33,24 @@ function getQuotes(e){
         })
 
     }
+}
 
+function shuffle(quotes){
+    let CI=quotes.length, tempValue, randomIndex;
+
+    while(CI>0){
+        randomIndex=Math.floor(Math.random()*CI);
+
+        //decrease ci by 1
+        CI--;
+
+        //swap the last elemtent by cI
+
+        tempValue=quotes[CI];
+        quotes[CI]=quotes[randomIndex];
+        quotes[randomIndex]=tempValue;
+
+    }
+
+    return quotes;
 }
